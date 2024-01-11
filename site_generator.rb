@@ -1,9 +1,10 @@
 class SiteGenerator
-  attr_reader :site_name, :author_name
+  attr_reader :site_name, :author_name, :js_directory
 
-  def initialize(site_name:, author_name: '', js_folder: false, css_folder: false)
+  def initialize(site_name:, author_name: '', js_directory: false, css_directory: false)
     @site_name = site_name
     @author_name = author_name
+    @js_directory = js_directory
   end
 
   def create_site_directory
@@ -14,6 +15,12 @@ class SiteGenerator
     data = build_index_html
     IO.write("#{site_name}/index.html", data)
   end
+
+  def create_js_directory
+    Dir.mkdir("#{site_name}/js") if js_directory
+  end
+
+  private
 
   def build_index_html
     <<~HEREDOC
