@@ -1,10 +1,11 @@
 class SiteGenerator
-  attr_reader :site_name, :author_name, :js_directory
+  attr_reader :site_name, :author_name, :js_directory, :css_directory
 
   def initialize(site_name:, author_name: '', js_directory: false, css_directory: false)
     @site_name = site_name
     @author_name = author_name
     @js_directory = js_directory
+    @css_directory = css_directory
   end
 
   def create_site_directory
@@ -18,6 +19,10 @@ class SiteGenerator
 
   def create_js_directory
     Dir.mkdir("#{site_name}/js") if js_directory
+  end
+
+  def create_css_directory
+    Dir.mkdir("#{site_name}/css") if css_directory
   end
 
   private

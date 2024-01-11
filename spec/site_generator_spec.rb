@@ -46,4 +46,16 @@ describe SiteGenerator do
     site_generator.create_js_directory
     expect(Dir).to have_received(:mkdir).with("#{site_name}/js")
   end
+
+  it 'does not create a css directory when not selected' do
+    site_generator = SiteGenerator.new(site_name: site_name, css_directory: false)
+    site_generator.create_css_directory
+    expect(Dir).to_not have_received(:mkdir)
+  end
+
+  it 'creates a css directory inside of the site directory when selected' do
+    site_generator = SiteGenerator.new(site_name: site_name, css_directory: true)
+    site_generator.create_css_directory
+    expect(Dir).to have_received(:mkdir).with("#{site_name}/css")
+  end
 end
