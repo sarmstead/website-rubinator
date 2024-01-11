@@ -14,6 +14,13 @@ describe SiteGenerator do
     expect(Dir).to have_received(:mkdir).with(site_name)
   end
 
+  it 'does not create a site directory if it exists' do
+    allow(Dir).to receive(:mkdir).and_raise(Errno::EEXIST)
+    site_generator = SiteGenerator.new(site_name: site_name)
+    site_generator.create_site_directory
+    expect
+  end
+
   it 'creates an index.html file in site directory' do
     site_generator = SiteGenerator.new(site_name: site_name)
     site_generator.create_index

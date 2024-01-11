@@ -10,6 +10,9 @@ class SiteGenerator
 
   def create_site_directory
     Dir.mkdir(site_name)
+    site_name
+  rescue Errno::EEXIST
+    raise DirectoryExistsError, site_name
   end
 
   def create_index
