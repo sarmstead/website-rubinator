@@ -29,6 +29,7 @@ GEM
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
     stringio (3.0.8)
+    thor (1.2.2)
 
 PLATFORMS
   arm64-darwin-22
@@ -36,6 +37,7 @@ PLATFORMS
 DEPENDENCIES
   debug (>= 1.0.0)
   rspec
+  thor
 
 BUNDLED WITH
    2.4.12
