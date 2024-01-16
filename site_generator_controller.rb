@@ -38,16 +38,18 @@ class SiteGeneratorController
   end
 
   def create_js_directory
-    dir_name = site_generator.create_js_directory
-
-    return unless dir_name
-
-    details << "Created #{dir_name}"
+    create_sub_directory(
+      site_generator.create_js_directory
+    )
   end
 
   def create_css_directory
-    dir_name = site_generator.create_css_directory
+    create_sub_directory(
+      site_generator.create_css_directory
+    )
+  end
 
+  def create_sub_directory(dir_name)
     return unless dir_name
 
     details << "Created #{dir_name}"
