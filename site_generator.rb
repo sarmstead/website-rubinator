@@ -25,14 +25,18 @@ class SiteGenerator
   end
 
   def create_js_directory
+    return unless js_directory
+
     path = "#{site_name}/js"
-    Dir.mkdir(path) if js_directory
+    Dir.mkdir(path)
     path
   end
 
   def create_css_directory
+    return unless css_directory
+
     path = "#{site_name}/css"
-    Dir.mkdir(path) if css_directory
+    Dir.mkdir(path)
     path
   end
 

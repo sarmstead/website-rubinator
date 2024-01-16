@@ -38,10 +38,18 @@ class SiteGeneratorController
   end
 
   def create_js_directory
-    details << "Created #{site_generator.create_js_directory}"
+    dir_name = site_generator.create_js_directory
+
+    return unless dir_name
+
+    details << "Created #{dir_name}"
   end
 
   def create_css_directory
-    details << "Created #{site_generator.create_css_directory}"
+    dir_name = site_generator.create_css_directory
+
+    return unless dir_name
+
+    details << "Created #{dir_name}"
   end
 end

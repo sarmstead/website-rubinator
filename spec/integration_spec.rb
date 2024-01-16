@@ -31,6 +31,20 @@ describe 'SiteGeneratorController Integration Test' do
     expect(controller.details).to include("Created #{site_name}/css")
   end
 
+  specify('Set options 🛠️') do
+    controller = SiteGeneratorController.new(
+      site_name:,
+      author_name: 'George',
+      js_directory: false,
+      css_directory: false
+    )
+
+    controller.create_site
+
+    expect(controller.details).to_not include("Created #{site_name}/js")
+    expect(controller.details).to_not include("Created #{site_name}/css")
+  end
+
   specify('Sad Path 😭') do
     Dir.mkdir(site_name)
 
