@@ -1,21 +1,22 @@
 require 'thor'
-require_relative './string'
 require_relative './site_generator_controller'
 
 class Rubinator < Thor
+  include Thor::Actions
+
   desc 'install', 'Welcome to the Rubinator...'
 
   def install
     site_name = ask('Okay, what should we name your website?')
     author_name = ask('Schweet. And your name?')
-    js_directory = ask('Do you want a JS directory', limited_to: %w[y n])
-    css_directory = ask('Do you want a CSS directory', limited_to: %w[y n])
+    js_directory = yes?('Do you want a JS directory (y/n)')
+    css_directory = yes?('Do you want a CSS directory (y/n)')
 
     controller = SiteGeneratorController.new(
       site_name:,
       author_name:,
-      js_directory: js_directory.to_boolean,
-      css_directory: css_directory.to_boolean
+      js_directory: js_directory,
+      css_directory: css_directory
     )
 
     controller.create_site
