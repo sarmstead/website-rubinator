@@ -1,3 +1,5 @@
+require_relative './exceptions'
+
 class SiteGenerator
   attr_reader :site_name, :author_name, :js_directory, :css_directory
 
@@ -10,19 +12,32 @@ class SiteGenerator
 
   def create_site_directory
     Dir.mkdir(site_name)
+    site_name
+  rescue Errno::EEXIST
+    raise DirectoryExistsError, site_name
   end
 
   def create_index
     data = build_index_html
-    IO.write("#{site_name}/index.html", data)
+    path = "#{site_name}/index.html"
+    IO.write(path, data)
+    path
   end
 
   def create_js_directory
-    Dir.mkdir("#{site_name}/js") if js_directory
+    return unless js_directory
+
+    path = "#{site_name}/js"
+    Dir.mkdir(path)
+    path
   end
 
   def create_css_directory
-    Dir.mkdir("#{site_name}/css") if css_directory
+    return unless css_directory
+
+    path = "#{site_name}/css"
+    Dir.mkdir(path)
+    path
   end
 
   private

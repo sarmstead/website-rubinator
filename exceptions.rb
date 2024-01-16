@@ -1,0 +1,2 @@
+class DirectoryExistsError < StandardError
+end
