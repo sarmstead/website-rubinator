@@ -1,5 +1,5 @@
 # Rubinator
-Rubinator is a powerful Ruby program that creates a website directory and an `index.html` file for you! It'll even include a `js` and `css` if you so choose.
+Rubinator is a powerful Ruby program that creates a website directory and an `index.html` file for you! It'll even include `js` and `css` directories if you so choose. Neato!
 
 ## Generate a Website Template!
 Rubinator requires Ruby version `3.2.2`. Once you have that version in place, install all the Ruby Gems.
