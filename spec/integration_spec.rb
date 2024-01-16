@@ -28,6 +28,7 @@ describe 'SiteGeneratorController Integration Test' do
     expect(controller.details).to include("Created #{site_name}")
     expect(controller.details).to include("Created #{site_name}/index.html")
     expect(controller.details).to include("Created #{site_name}/js")
+    expect(controller.details).to include("Created #{site_name}/css")
   end
 
   specify('Sad Path 😭') do

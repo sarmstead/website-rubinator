@@ -17,7 +17,8 @@ class SiteGeneratorController
     create_site_index
     # site_generator.create_js_directory
     create_js_directory
-    site_generator.create_css_directory
+    # site_generator.create_css_directory
+    create_css_directory
   end
 
   private
@@ -38,5 +39,9 @@ class SiteGeneratorController
 
   def create_js_directory
     details << "Created #{site_generator.create_js_directory}"
+  end
+
+  def create_css_directory
+    details << "Created #{site_generator.create_css_directory}"
   end
 end

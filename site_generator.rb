@@ -31,7 +31,9 @@ class SiteGenerator
   end
 
   def create_css_directory
-    Dir.mkdir("#{site_name}/css") if css_directory
+    path = "#{site_name}/css"
+    Dir.mkdir(path) if css_directory
+    path
   end
 
   private
