@@ -3,29 +3,24 @@ require_relative './site_generator'
 class SiteGeneratorController
   attr_reader :details, :errors
 
-  def initialize(site_name:, author_name: '', js_directory: false, css_directory: false)
-    @site_generator = SiteGenerator.new(site_name:, author_name:, js_directory:, css_directory:)
-    @site_name = site_name
+  def initialize(args)
+    @site_generator = SiteGenerator.new(**args)
     @details = []
     @errors = []
   end
 
   def create_site
-    # site_generator.create_site_directory
     create_site_directory
-    # site_generator.create_index
+    return if errors.any?
+
     create_site_index
-    # site_generator.create_js_directory
     create_js_directory
-    # site_generator.create_css_directory
     create_css_directory
   end
 
   private
 
-  attr_reader \
-    :site_generator,
-    :site_name
+  attr_reader :site_generator
 
   def create_site_directory
     details << "Created #{site_generator.create_site_directory}"
