@@ -4,9 +4,9 @@ require_relative './site_generator_controller'
 class Rubinator < Thor
   include Thor::Actions
 
-  desc 'install', 'Welcome to the Rubinator...'
+  desc 'build', 'Welcome to the Rubinator...'
 
-  def install
+  def build
     site_name = ask('Okay, what should we name your website?')
     author_name = ask('Schweet. And your name?')
     js_directory = yes?('Do you want a JS directory (y/n)')
